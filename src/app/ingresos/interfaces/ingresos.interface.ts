@@ -6,8 +6,12 @@ export interface Ingreso {
   monto: number;
   fecha: Date;
   categoria: string;
-  cuenta: Cuenta;
+  cuenta?: Cuenta;
 }
 
+export interface Categoria {
+  descripcion: string,
+  code: string
+}
 
 

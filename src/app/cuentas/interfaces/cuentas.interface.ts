@@ -6,5 +6,5 @@ export interface Cuenta {
   tipoCuenta: string;
   saldoInicial: number;
   saldoActual: number;
-  usuario: Usuario;
+  usuario?: Usuario;
 }

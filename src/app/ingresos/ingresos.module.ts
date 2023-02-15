@@ -6,7 +6,8 @@ import {HomeComponent} from './pages/home/home.component';
 import {ListadoComponent} from './pages/listado/listado.component';
 import {IngresosRoutingModule} from "./ingresos-routing.module";
 import {PrimeNgModule} from "../prime-ng/prime-ng.module";
-
+import {ReactiveFormsModule} from "@angular/forms";
+import {SharedModule} from "../shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import {PrimeNgModule} from "../prime-ng/prime-ng.module";
   imports: [
     CommonModule,
     IngresosRoutingModule,
-    PrimeNgModule
+    ReactiveFormsModule,
+    PrimeNgModule,
+    SharedModule
   ]
 })
 export class IngresosModule {

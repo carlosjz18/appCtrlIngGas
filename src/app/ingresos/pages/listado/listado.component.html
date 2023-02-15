@@ -1,3 +1,29 @@
-<ul>
-  <li *ngFor="let ingreso of ingresos">{{ingreso|json}}</li>
-</ul>
+<p-card header="Lista Ingresos">
+  <p-table [value]="ingresos">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>#</th>
+        <th>Descripción</th>
+        <th>Monto</th>
+        <th>Fecha</th>
+        <th>Categoría</th>
+        <th>Cuenta</th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-ingreso>
+      <tr>
+        <td>{{ingreso.ingresoId}}</td>
+        <td>{{ingreso.descripcion}}</td>
+        <td>{{ingreso.monto|currency}}</td>
+        <td>{{ingreso.fecha}}</td>
+        <td>{{ingreso.categoria}}</td>
+        <td>{{ingreso.cuenta.tipoCuenta + '/' + ingreso.cuenta.institucionFinanciera}}</td>
+        <td>
+          <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-text"
+                  [routerLink]="['/ingresos/detalle', ingreso.ingresoId]"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>

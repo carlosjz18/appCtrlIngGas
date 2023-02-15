@@ -5,9 +5,9 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 
 import {SharedModule} from "./shared/shared.module";
-import {PrimeNgModule} from "./prime-ng/prime-ng.module";
-import {HttpClientModule} from "@angular/common/http";
-
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
 
 
 @NgModule({
@@ -16,12 +16,18 @@ import {HttpClientModule} from "@angular/common/http";
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
-    PrimeNgModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,1 +1,55 @@
-<p>agregar works!</p>
+<p-card header="Nuevo Ingreso">
+
+  <form (ngSubmit)="guardar()" autocomplete="off" [formGroup]="ingresoForm">
+    <div class="p-fluid grid formgrid">
+
+      <div class="field col-12 md:col-4">
+        <label for="descripcion" class="block">Descripción</label>
+        <input id="descripcion" type="text" pInputText formControlName="descripcion"
+               [ngClass]="{'ng-invalid ng-dirty' : campoEsValido('descripcion')}">
+        <span class="p-error block" *ngIf="campoEsValido('descripcion')">
+            El campo debe ser mínimo 3 letras
+          </span>
+      </div>
+
+      <div class="field col-12 md:col-4">
+        <label for="monto" class="block">Monto</label>
+        <p-inputNumber formControlName="monto" id="monto" inputId="monto" mode="decimal" locale="en-US"
+                       prefix="$" [minFractionDigits]="2" [maxFractionDigits]="2"
+                       [ngClass]="{'ng-invalid ng-dirty' : campoEsValido('monto')}">
+        </p-inputNumber>
+        <span class="p-error block" *ngIf="campoEsValido('monto')">
+            El campo es requerido
+          </span>
+      </div>
+
+      <div class="field col-12 md:col-4">
+        <label for="fecha" class="block">Fecha</label>
+        <p-calendar id="fecha" [showIcon]="true" inputId="fecha" formControlName="fecha" dateFormat="dd/mm/yy"
+                    [ngClass]="{'ng-invalid ng-dirty' : campoEsValido('fecha')}"></p-calendar>
+        <span class="p-error block" *ngIf="campoEsValido('fecha')">
+            El campo es requerido
+          </span>
+      </div>
+
+      <div class="field col-12 md:col-4">
+        <label for="categoria" class="block">Categoría</label>
+        <p-dropdown [options]="categorias" id="categoria" formControlName="categoria"
+                    placeholder="Selecciona una categoría"
+                    optionLabel="descripcion" optionValue="code" [showClear]="true"
+                    [ngClass]="{'ng-invalid ng-dirty' : campoEsValido('categoria')}"></p-dropdown>
+        <span class="p-error block" *ngIf="campoEsValido('categoria')">
+            El campo es requerido
+          </span>
+      </div>
+
+    </div>
+
+    <p-button label="Guardar" icon="pi pi-check" type="submit"></p-button>
+
+  </form>
+
+</p-card>
+
+
+

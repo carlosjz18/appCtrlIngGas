@@ -2,28 +2,48 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Ingreso} from "../interfaces/ingresos.interface";
 import {map, Observable} from "rxjs";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class IngresosService {
 
+  private apiEndpointUrl: string = environment.apiEndpointUrl;
+
   get httpHeaders() {
-    //const headers = new HttpHeaders().set('x-token', localStorage.getItem('token') || '');
-    return new HttpHeaders().set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjYXJsb3NAZ21haWwuY29tIiwiZXhwIjoxNjc4OTI0MDM3LCJub21icmUiOiJDYXJsb3MgSmFpbWV6Iiwicm9sIjoiQURNSU4ifQ.ukyenH9lHntuAhWGBX4x9r8-zAlb_2HGSTpATVjfNAo');
+    return new HttpHeaders().set('Authorization', localStorage.getItem('token') || '');
   }
 
   constructor(private http: HttpClient) {
   }
 
   getIngresos(): Observable<Ingreso[]> {
+    return this.http.get<Ingreso[]>(`${this.apiEndpointUrl}/api/ingresos`, {headers: this.httpHeaders})
+      .pipe(map((resp: any) => {
+        return resp.data;
+      }));
+  }
 
-    return this.http.get<Ingreso[]>('http://localhost:8080/api/ingresos', {headers: this.httpHeaders})
-      .pipe(
-        map((resp: any) => {
-            return resp.data;
-          }
-        )
-      );
+  getIngresoPorId(id: number): Observable<Ingreso> {
+    return this.http.get<Ingreso[]>(`${this.apiEndpointUrl}/api/ingresos/${id}`, {headers: this.httpHeaders})
+      .pipe(map((resp: any) => {
+        return resp.data;
+      }));
+  }
+
+  agregarIngreso(ingreso: Ingreso): Observable<Ingreso> {
+    return this.http.post<Ingreso[]>(`${this.apiEndpointUrl}/api/ingresos`, ingreso, {headers: this.httpHeaders})
+      .pipe(map((resp: any) => {
+        return resp.data;
+      }));
+  }
+
+  actualizarIngreso(ingreso: Ingreso): Observable<any> {
+    return this.http.put<Ingreso[]>(`${this.apiEndpointUrl}/api/ingresos/${ingreso.ingresoId}`, ingreso, {headers: this.httpHeaders});
+  }
+
+  elimninarIngreso(id: number): Observable<any> {
+    return this.http.delete<Ingreso[]>(`${this.apiEndpointUrl}/api/ingresos/${id}`, {headers: this.httpHeaders});
   }
 }

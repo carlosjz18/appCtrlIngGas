@@ -1,1 +1,34 @@
-<p>ingreso works!</p>
+<p-card header="Detalle Ingreso">
+
+  <div *ngIf="ingreso">
+    <h3>Ingreso</h3>
+    <p>Ingreso Id: {{ingreso.ingresoId}}</p>
+    <p>Descripción: {{ingreso.descripcion}}</p>
+    <p>Monto: {{ingreso.monto | currency}}</p>
+    <p>Fecha: {{ingreso.fecha | date}}</p>
+  </div>
+  <p-divider></p-divider>
+  <div *ngIf="ingreso">
+    <h3>Cuenta</h3>
+    <p>Cuenta Id: {{ingreso.cuenta?.cuentaId}}</p>
+    <p>Institución Financiera: {{ingreso.cuenta?.institucionFinanciera}}</p>
+    <p>Tipo de Cuenta: {{ingreso.cuenta?.tipoCuenta}}</p>
+  </div>
+  <p-divider></p-divider>
+  <div *ngIf="ingreso">
+    <h3>Usuario</h3>
+    <p>Usuario Id: {{ingreso.cuenta?.usuario?.usuarioId}}</p>
+    <p>Nombre: {{ingreso.cuenta?.usuario?.nombre}}</p>
+    <p>Correo: {{ingreso.cuenta?.usuario?.correo}}</p>
+    <p>Rol: {{ingreso.cuenta?.usuario?.rol}}</p>
+  </div>
+
+  <button pButton pRipple type="button" label="Regresar" icon="pi pi-arrow-left" (click)="regresar()"></button>
+  <button *ngIf="ingreso" pButton pRipple type="button" label="Editar" class="p-button-success ml-1" icon="pi pi-pencil"
+          [routerLink]="['/ingresos/editar', ingreso.ingresoId]"></button>
+  <button pButton pRipple type="button" label="Eliminar" class="p-button-danger ml-1" icon="pi pi-trash"
+          (click)="eliminar()"></button>
+
+</p-card>
+
+<!--<pre>{{ingreso|json}}</pre>-->
