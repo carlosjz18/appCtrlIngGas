@@ -25,11 +25,11 @@ export class LoginComponent {
   }
 
   login() {
-    console.log('formulario login():', this.miFormulario.value);
     const {email, password} = this.miFormulario.value;
 
     this.authService.login(email, password)
       .subscribe(resp => {
+        console.log("respuesta login: ", resp);
         if (resp) {
           this.router.navigateByUrl('/ingresos/listar');
         } else {

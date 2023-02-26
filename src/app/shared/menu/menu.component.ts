@@ -12,6 +12,10 @@ export class MenuComponent implements OnInit {
   constructor(private authService: AuthService) {
   }
 
+  get usuario() {
+    return this.authService.usuario;
+  }
+
   items: MenuItem[] = [];
 
   ngOnInit(): void {
@@ -80,9 +84,19 @@ export class MenuComponent implements OnInit {
         ]
       },
       {
-        label: 'Cerrar sesión',
-        icon: 'pi pi-power-off',
-        command: () => this.authService.logout()
+        label: this.usuario.nombre,
+        icon: 'pi pi-user',
+        items: [
+          {
+            label: 'Rol [' + this.usuario.rol + ']',
+            icon: 'pi pi-key'
+          },
+          {
+            label: 'Cerrar sesión',
+            icon: 'pi pi-power-off',
+            command: () => this.authService.logout()
+          }
+        ]
       }
     ];
   }

@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
-//import {AuthResponse, Usuario} from '../interfaces/interfaces';
 import {catchError, map, tap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
 import {Usuario} from "../../usuarios/interfaces/usuarios.interface";
@@ -43,14 +42,18 @@ export class AuthService {
   login(email: string, password: string) {
 
     const url = `${this.apiEndpointUrl}/login`;
-    console.log('url', url);
     const body = {email, password};
 
     return this.http.post<any>(url, body, {observe: 'response'})
       .pipe(
         tap(resp => {
-          console.log(resp);
           if (resp.headers.get('Authorization')) {
+            this._usuario = {
+              nombre: resp.body.nombre,
+              correo: resp.body.correo,
+              rol: resp.body.rol
+            }
+            localStorage.setItem('user', JSON.stringify(this._usuario));
             localStorage.setItem('token', resp.headers.get('Authorization')!);
           }
         }),
@@ -61,6 +64,7 @@ export class AuthService {
 
   validarToken(): Observable<boolean> {
     if (localStorage.getItem('token')) {
+      this._usuario = JSON.parse(localStorage.getItem('user')!);
       return of(true);
     } else {
       return of(false);
