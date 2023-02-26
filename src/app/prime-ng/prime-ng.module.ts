@@ -8,7 +8,6 @@ import {InputTextModule} from 'primeng/inputtext';
 import {TableModule} from 'primeng/table';
 import {RippleModule} from "primeng/ripple";
 import {DividerModule} from 'primeng/divider';
-import {ToastModule} from 'primeng/toast';
 import {CalendarModule} from 'primeng/calendar';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {DropdownModule} from 'primeng/dropdown';
@@ -22,7 +21,6 @@ import {DropdownModule} from 'primeng/dropdown';
     TableModule,
     RippleModule,
     DividerModule,
-    ToastModule,
     CalendarModule,
     InputNumberModule,
     DropdownModule

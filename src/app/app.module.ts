@@ -7,7 +7,9 @@ import {AppComponent} from './app.component';
 import {SharedModule} from "./shared/shared.module";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
+import {ErrorInterceptorService} from './interceptors/error.interceptor.service';
+import {MessageService} from "primeng/api";
+import {ToastModule} from "primeng/toast";
 
 
 @NgModule({
@@ -19,12 +21,14 @@ import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
     BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastModule
   ],
   providers: [
+    MessageService,
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: HttpErrorInterceptor,
+      useClass: ErrorInterceptorService,
       multi: true
     }
   ],

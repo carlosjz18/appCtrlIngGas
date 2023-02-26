@@ -4,8 +4,6 @@ import {Router} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
 import {MessageService} from "primeng/api";
 
-//import Swal from 'sweetalert2';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -29,15 +27,14 @@ export class LoginComponent {
 
     this.authService.login(email, password)
       .subscribe(resp => {
-        console.log("respuesta login: ", resp);
         if (resp) {
           this.router.navigateByUrl('/ingresos/listar');
         } else {
-          this.messageService.add({
+          /*this.messageService.add({
             severity: 'error',
             summary: 'Ocurrió un error',
             detail: 'Usuario y/o contraseña incorrectos'
-          });
+          });*/
         }
       });
   }
