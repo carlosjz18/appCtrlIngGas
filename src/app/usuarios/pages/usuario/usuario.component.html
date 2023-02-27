@@ -1,0 +1,17 @@
+<p-card header="Detalle Usuario">
+
+  <div *ngIf="usuario">
+    <h3>Usuario</h3>
+    <p>Usuario Id: {{usuario.usuarioId}}</p>
+    <p>Nombre: {{usuario.nombre}}</p>
+    <p>Correo: {{usuario.correo}}</p>
+    <p>Rol: {{usuario.rol}}</p>
+  </div>
+
+  <button pButton pRipple type="button" label="Regresar" icon="pi pi-arrow-left" (click)="regresar()"></button>
+  <button *ngIf="usuario" pButton pRipple type="button" label="Editar" class="p-button-success ml-1" icon="pi pi-pencil"
+          [routerLink]="['/usuarios/editar', usuario.usuarioId]"></button>
+  <button pButton pRipple type="button" label="Eliminar" class="p-button-danger ml-1" icon="pi pi-trash"
+          (click)="eliminar()"></button>
+
+</p-card>

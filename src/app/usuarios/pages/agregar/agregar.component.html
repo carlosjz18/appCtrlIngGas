@@ -1,0 +1,54 @@
+<p-card header="{{title}}">
+
+  <form (ngSubmit)="guardar()" autocomplete="off" [formGroup]="usuarioForm">
+    <div class="p-fluid grid formgrid">
+
+      <div class="field col-12 md:col-4">
+        <label for="nombre" class="block">Nombre</label>
+        <input id="nombre" type="text" pInputText formControlName="nombre"
+               [ngClass]="{'ng-invalid ng-dirty' : campoEsValido('nombre')}">
+        <span class="p-error block" *ngIf="campoEsValido('nombre')">
+            El campo debe ser mínimo 5 letras
+          </span>
+      </div>
+
+      <div class="field col-12 md:col-4">
+        <label for="correo" class="block">Correo</label>
+        <input id="correo" type="email" pInputText formControlName="correo"
+               [ngClass]="{'ng-invalid ng-dirty' : campoEsValido('correo')}">
+        <span class="p-error block" *ngIf="campoEsValido('correo')">
+           Correo no válido
+          </span>
+      </div>
+
+      <div class="field col-12 md:col-4">
+        <label for="contrasena" class="block">Contraseña</label>
+        <input id="contrasena" type="password" pInputText formControlName="contrasena"
+               [ngClass]="{'ng-invalid ng-dirty' : campoEsValido('contrasena')}">
+        <span class="p-error block" *ngIf="campoEsValido('contrasena')">
+           El campo debe ser mínimo de 8 caracteres
+          </span>
+      </div>
+
+      <div class="field col-12 md:col-4">
+        <label for="rol" class="block">Rol</label>
+        <p-dropdown [options]="roles" id="rol" formControlName="rol"
+                    placeholder="Selecciona un rol" [showClear]="true"
+                    [ngClass]="{'ng-invalid ng-dirty' : campoEsValido('rol')}">
+          <ng-template let-item pTemplate="selectedItem">{{item}}</ng-template>
+          <ng-template let-item pTemplate="item">{{item}}</ng-template>
+        </p-dropdown>
+        <span class="p-error block" *ngIf="campoEsValido('rol')">
+            El campo es requerido
+          </span>
+      </div>
+
+    </div>
+
+    <p-button label="Guardar" icon="pi pi-check" type="submit"></p-button>
+
+  </form>
+
+</p-card>
+
+

@@ -5,3 +5,5 @@ export interface Usuario {
   contrasena?: string;
   rol: string;
 }
+
+
