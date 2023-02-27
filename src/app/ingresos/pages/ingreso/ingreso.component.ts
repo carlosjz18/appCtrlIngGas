@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Ingreso} from "../../interfaces/ingresos.interface";
-import {switchMap, tap} from "rxjs";
+import {switchMap} from "rxjs";
 import {IngresosService} from "../../services/ingresos.service";
 import {MessageService} from "primeng/api";
 
@@ -35,8 +35,6 @@ export class IngresoComponent implements OnInit {
   eliminar() {
     this.ingresoService.elimninarIngreso(this.ingreso.ingresoId!)
       .subscribe(resp => {
-        /*console.log('Respuesta');
-        console.log(resp);*/
         this.router.navigate(['/ingresos/listado']);
         this.messageService.add({
           severity: 'success',

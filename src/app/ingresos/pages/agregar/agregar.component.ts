@@ -14,6 +14,8 @@ import {switchMap} from "rxjs";
 })
 export class AgregarComponent implements OnInit {
 
+  title: string = 'Nuevo Ingreso';
+
   ingreso: Ingreso = {
     descripcion: '',
     monto: 0,
@@ -54,6 +56,8 @@ export class AgregarComponent implements OnInit {
     if (!this.router.url.includes('editar')) {
       return;
     }
+
+    this.title = 'Editar Ingreso';
 
     // Cuando la ruta es editar se trae la información del ingreso por medio del service
     this.activatedRoute.params
