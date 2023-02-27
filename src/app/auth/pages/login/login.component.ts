@@ -28,7 +28,7 @@ export class LoginComponent {
     this.authService.login(email, password)
       .subscribe(resp => {
         if (resp) {
-          this.router.navigateByUrl('/ingresos/listar');
+          this.router.navigateByUrl('/dashboard');
         } else {
           /*this.messageService.add({
             severity: 'error',

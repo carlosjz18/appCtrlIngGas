@@ -8,6 +8,12 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
+    path: 'dashboard',
+    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
+    canActivate: [ValidarTokenGuard],
+    canLoad: [ValidarTokenGuard]
+  },
+  {
     path: 'ingresos',
     loadChildren: () => import('./ingresos/ingresos.module').then(m => m.IngresosModule),
     canActivate: [ValidarTokenGuard],
@@ -37,7 +43,7 @@ const routes: Routes = [
   },
   {
     path: "",
-    redirectTo: 'ingresos',
+    redirectTo: 'dashboard',
     pathMatch: 'full'
   },
   {
