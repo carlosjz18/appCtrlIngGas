@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {ValidarTokenGuard} from "./guards/validar-token.guard";
+import {AuthGuard} from "./guards/auth.guard";
 
 const routes: Routes = [
   {
@@ -11,31 +12,43 @@ const routes: Routes = [
     path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
     canActivate: [ValidarTokenGuard],
-    canLoad: [ValidarTokenGuard]
+    canActivateChild: [ValidarTokenGuard]
   },
   {
     path: 'ingresos',
     loadChildren: () => import('./ingresos/ingresos.module').then(m => m.IngresosModule),
-    canActivate: [ValidarTokenGuard],
-    canLoad: [ValidarTokenGuard]
+    canActivate: [ValidarTokenGuard, AuthGuard],
+    canActivateChild: [ValidarTokenGuard, AuthGuard],
+    data: {
+      role: 'ROLE_USER'
+    }
   },
   {
     path: 'gastos',
     loadChildren: () => import('./gastos/gastos.module').then(m => m.GastosModule),
-    canActivate: [ValidarTokenGuard],
-    canLoad: [ValidarTokenGuard]
+    canActivate: [ValidarTokenGuard, AuthGuard],
+    canActivateChild: [ValidarTokenGuard, AuthGuard],
+    data: {
+      role: 'ROLE_USER'
+    }
   },
   {
     path: 'cuentas',
     loadChildren: () => import('./cuentas/cuentas.module').then(m => m.CuentasModule),
-    canActivate: [ValidarTokenGuard],
-    canLoad: [ValidarTokenGuard]
+    canActivate: [ValidarTokenGuard, AuthGuard],
+    canActivateChild: [ValidarTokenGuard, AuthGuard],
+    data: {
+      role: 'ROLE_USER'
+    }
   },
   {
     path: 'usuarios',
     loadChildren: () => import('./usuarios/usuarios.module').then(m => m.UsuariosModule),
-    canActivate: [ValidarTokenGuard],
-    canLoad: [ValidarTokenGuard]
+    canActivate: [ValidarTokenGuard, AuthGuard],
+    canActivateChild: [ValidarTokenGuard, AuthGuard],
+    data: {
+      role: 'ROLE_ADMIN'
+    }
   },
   {
     path: '404',

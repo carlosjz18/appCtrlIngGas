@@ -13,6 +13,7 @@ export class AuthService {
 
   private apiEndpointUrl: string = environment.apiEndpointUrl;
   private _usuario!: Usuario;
+  private isLogin: boolean = false;
 
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -69,6 +70,13 @@ export class AuthService {
     } else {
       return of(false);
     }
+  }
+
+  isLoggedIn() {
+    if (localStorage.getItem('user')) {
+      this.isLogin = true;
+    }
+    return this.isLogin;
   }
 
   logout() {
