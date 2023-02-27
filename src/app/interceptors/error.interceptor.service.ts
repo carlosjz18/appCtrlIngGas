@@ -31,6 +31,17 @@ export class ErrorInterceptorService implements HttpInterceptor {
             let content: string[] = [];
             content.push(error.error.statusCode + ' - ' + error.error.status);
             content.push(error.error.message);
+
+            if (error.error.errors) {
+              const errores = error.error.errors;
+              content.push('Errores:');
+              for (const key in errores) {
+                if (errores.hasOwnProperty(key)) {
+                  content.push(`- ${key} : ${errores[key]}`)
+                }
+              }
+            }
+
             this.messageService.add({
               severity: 'error',
               summary: 'Error Servidor',
