@@ -23,6 +23,7 @@ export class MenuComponent implements OnInit {
       {
         label: 'Ingresos',
         icon: 'pi pi-check-circle',
+        visible: this.usuario.rol == 'ROLE_USER',
         items: [
           {
             label: 'Nuevo',
@@ -43,6 +44,7 @@ export class MenuComponent implements OnInit {
       {
         label: 'Gastos',
         icon: 'pi pi-dollar',
+        visible: this.usuario.rol == 'ROLE_USER',
         items: [{
           label: 'Nuevo',
           icon: 'pi pi-fw pi-plus',
@@ -60,6 +62,7 @@ export class MenuComponent implements OnInit {
       {
         label: 'Cuentas',
         icon: 'pi pi-wallet',
+        visible: this.usuario.rol == 'ROLE_USER',
         items: [{
           label: 'Nuevo',
           icon: 'pi pi-fw pi-plus',
@@ -73,6 +76,7 @@ export class MenuComponent implements OnInit {
       {
         label: 'Usuarios',
         icon: 'pi pi-users',
+        visible: this.usuario.rol == 'ROLE_ADMIN',
         items: [
           {
             label: 'Nuevo',

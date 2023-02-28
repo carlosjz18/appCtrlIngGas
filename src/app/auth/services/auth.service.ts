@@ -52,7 +52,7 @@ export class AuthService {
             this._usuario = {
               nombre: resp.body.nombre,
               correo: resp.body.correo,
-              rol: resp.body.rol
+              rol: 'ROLE_' + resp.body.rol
             }
             localStorage.setItem('user', JSON.stringify(this._usuario));
             localStorage.setItem('token', resp.headers.get('Authorization')!);
