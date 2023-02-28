@@ -1,5 +1,25 @@
 <p-card header="Dashboard">
+  <div class="p-fluid grid">
+    <div class="card col-6">
+      <h5>Ingresos</h5>
+      <p-chart type="bar" [data]="basicData" [options]="basicOptions"></p-chart>
+    </div>
 
+    <div class="card col-6">
+      <h5>Gastos</h5>
+      <p-chart type="line" [data]="basicData" [options]="horizontalOptions"></p-chart>
+    </div>
+
+    <div class="card col-6">
+      <h5>Ingresos vs Gastos</h5>
+      <p-chart type="doughnut" [data]="multiAxisData" [options]="multiAxisOptions"></p-chart>
+    </div>
+
+    <div class="card col-6">
+      <h5>Ingresos vs Gastos</h5>
+      <p-chart type="radar" [data]="multiAxisData" [options]="multiAxisOptions"></p-chart>
+    </div>
+  </div>
 </p-card>
 
 

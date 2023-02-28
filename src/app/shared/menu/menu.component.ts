@@ -95,7 +95,7 @@ export class MenuComponent implements OnInit {
         icon: 'pi pi-user',
         items: [
           {
-            label: 'Rol [' + this.usuario.rol + ']',
+            label: 'Rol [' + this.usuario.rol.split('_')[1] + ']',
             icon: 'pi pi-key'
           },
           {

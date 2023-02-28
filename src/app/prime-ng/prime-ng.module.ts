@@ -11,6 +11,7 @@ import {DividerModule} from 'primeng/divider';
 import {CalendarModule} from 'primeng/calendar';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {DropdownModule} from 'primeng/dropdown';
+import {ChartModule} from 'primeng/chart';
 
 @NgModule({
   exports: [
@@ -23,7 +24,8 @@ import {DropdownModule} from 'primeng/dropdown';
     DividerModule,
     CalendarModule,
     InputNumberModule,
-    DropdownModule
+    DropdownModule,
+    ChartModule
   ]
 })
 export class PrimeNgModule {
