@@ -22,24 +22,6 @@ export class AuthService {
     return {...this._usuario};
   }
 
-  registro(name: string, email: string, password: string) {
-
-    const url = `${this.apiEndpointUrl}/auth/new`;
-    const body = {name, email, password};
-
-    return this.http.post<any>(url, body)
-      .pipe(
-        tap(({ok, token}) => {
-          if (ok) {
-            localStorage.setItem('token', token!);
-          }
-        }),
-        map(resp => resp.ok),
-        catchError(err => of(err.error.msg))
-      );
-
-  }
-
   login(email: string, password: string) {
 
     const url = `${this.apiEndpointUrl}/login`;
