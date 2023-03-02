@@ -8,7 +8,7 @@ Aplicación web donde los usuarios podrán realizar el registro de sus ingresos 
 * Poder clasificar por categorías los ingresos y gastos realizados.
 * Poder registrar cuentas.
 
-**Solución Tecnologica**
+**Solución Tecnológica**
 
 * **Fronted:**
   Angular (Modules, Lazy Load, Guards, Interceptors, Services, Routes/Routes Childs, Reactive Forms, Interfaces, PrimeNg, LocalStorage, Chart.js)
