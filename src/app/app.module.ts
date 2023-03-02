@@ -7,7 +7,8 @@ import {AppComponent} from './app.component';
 import {SharedModule} from "./shared/shared.module";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {ErrorInterceptorService} from './interceptors/error.interceptor.service';
+import {ErrorInterceptorService} from './interceptors/error-interceptor.service';
+import {TokenInterceptorService} from "./interceptors/token-interceptor.service";
 import {MessageService} from "primeng/api";
 import {ToastModule} from "primeng/toast";
 
@@ -29,6 +30,11 @@ import {ToastModule} from "primeng/toast";
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptorService,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
       multi: true
     }
   ],
