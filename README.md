@@ -1,6 +1,25 @@
-# App Fronted del Sistema de Control Ingresos y Gastos 💵
+# Sistema de Control Ingresos y Gastos (Frontend) 💵
 
-App Fronted del Sistema de Control de Ingresos y Gastos, para la administración financiera de una persona.
+Aplicación web donde los usuarios podrán realizar el registro de sus ingresos y gastos como apoyo a su administración financiera personal.
+
+* Llevar el control de los ingresos y gastos de una persona.
+* Poder visualizar los ingresos y gastos por meses.
+* Poder visualizar un balance mensual de ingresos vs gastos.
+* Poder clasificar por categorías los ingresos y gastos realizados.
+* Poder registrar cuentas.
+
+**Solución Tecnologica**
+
+* **Fronted:**
+  Angular (Modules, Lazy Load, Guards, Interceptors, Services, Routes/Routes Childs, Reactive Forms, Interfaces, PrimeNg, LocalStorage, Chart.js)
+* **Backend:**
+  Java (JDK 17, Spring Boot, Spring Security, MySQL, JWT, Spring MVC Validation, Spring Data, Lombok, MapStruct, JUnit)
+
+**Enlaces**
+
+Repositorio Backend: [Aquí](https://github.com/carlosjz18/control-ingresos-y-gastos)<br>
+Presentación del proyecto: [Aquí](https://docs.google.com/presentation/d/1CMMx5kbofkKiOp9sxGFHomHoq1OPXTT4/edit?usp=share_link&ouid=102858048832342268967&rtpof=true&sd=true)<br>
+Duda o comentario contáctame por LinkedIn: [Aquí](https://www.linkedin.com/in/carlos-jaimez/)
 
 BEDU: Developer Engineering
 
